@@ -1,4 +1,4 @@
-package Day28_6_2023.SortingAlgorithm;
+package Day26_6_2023.SortingAlgorithm;
 
 public class MergeSort {
 
