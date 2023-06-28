@@ -7,9 +7,6 @@ public class MyLinkedList {
         // Initialize the Nodes.
         int value;
         Node next;
-        Node head = null;
-        Node tail = null;
-
 
         Node(int value) {
             this.value = value;
@@ -18,36 +15,35 @@ public class MyLinkedList {
         Node getNext() {
             return next;
         }
-
-        void addAtStart(int value) {
-            // Create a new node
-            Node newNode = new Node(value);
-
-            // Check if list is empty
-            if (head == null) {
-                head = newNode;
-                tail = newNode;
-            } else {
-                // temporarily save the current head to the temp Node
-                Node temporary = head;
-                // Replace the head node with the new node
-                head = newNode;
-                // Link the new head node to the temporary node
-                head.next = temporary;
-            }
-        }
     }
+    public void addAtStart(int value) {
+        Node head = null;
+        Node tail = null;
+        // Create a new node
+        Node newNode = new Node(value);
+
+        // Check if list is empty
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            // temporarily save the current head to the temp Node
+            Node temporary = head;
+            // Replace the head node with the new node
+            head = newNode;
+            // Link the new head node to the temporary node
+            head.next = temporary;
+        }
+        System.out.println(newNode.value);
+    }
+
 
 
     //Connect nodes
     public static void main(String[] args) {
-
-        Node node = new Node(3);
-        node.addAtStart(5);
-        System.out.println(node.value);
-        System.out.println(node.getNext());
-
-
+        MyLinkedList myLinkedList = new MyLinkedList();
+        myLinkedList.addAtStart(5);
+        myLinkedList.addAtStart(6);
     }
 }
 
