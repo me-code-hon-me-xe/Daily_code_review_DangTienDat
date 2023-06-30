@@ -12,7 +12,7 @@ public class FinalKeyword {
 }
 
 class Toyota{
-    public static final String CAR_MADE = "Toyota";
+    public static  String CAR_MADE = "Toyota";
     public Toyota(String CAR_MADE){
         this.CAR_MADE = CAR_MADE; // error: Cannot assign a value to final variable 'CAR_MADE'
     }
