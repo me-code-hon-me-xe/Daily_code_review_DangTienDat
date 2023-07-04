@@ -11,7 +11,7 @@ public class AddTwoNumber {
         ListNode listNode2 = new ListNode(2);
         listNode2.next = new ListNode(3);
 
-        AddTwoNums addTwoNumber = new AddTwoNums();
+        AddTwoNum addTwoNumber = new AddTwoNum();
         addTwoNumber.add(listNode1, listNode2);
     }
 
@@ -34,7 +34,7 @@ public class AddTwoNumber {
         }
     }
 
-    static class AddTwoNums {
+    static class AddTwoNum {
         void add(ListNode l1, ListNode l2){// l1 = 2, l2 = 2
             ListNode temp = new ListNode(0); // temp = 0
             int carry = 0;
