@@ -236,4 +236,30 @@
 
           // Output: Book: title= The Great Gatsby, author= F. Scott Fitzgerald, publicationYear= 1925, genre= Classic Fiction
           ```
+      - **Superclass super.variable**
+        - When a subclass has a variable with the same name as a variable in the superclass, using **super.varable** would allow you to distinct the superclass's variable with the one in subclass.
+        ```java
+          static class Textbook extends Book {
+              // A textbook have different kind of subject such as  mathematics, history, biology, etc.
+              private final String subject;
+              // Try to create a variable have the same name in Superclass
+              private final String title;
+              // Create a constructor when it is fulfilled
+              Textbook(String tl, String aut, int pby, String subject) {
+                  super.title = tl;
+                  title = "SubclassTitle";
+                  this.subject = subject;
+              }
+              void show() {
+                  System.out.println("title in superclass: " + super.title);
+                  System.out.println("title in subclass: " + title);
+              }
+          }
+              // Create instance:
+              // Textbook textbook1 = new Textbook("Chemistry", "John Smith", 1643, "Chemistry 101");
+              // textbool1.show()
+              // This is the output:
+              // title in superclass: Chemistry
+              // title in superclass: SubclassTitle
+        ```
       
