@@ -262,4 +262,7 @@
               // title in superclass: Chemistry
               // title in superclass: SubclassTitle
         ```
+## 2. Dynamic Method Dispatch
+  - Em vẫn chưa hiểu trong cái method override   
+  - Em vẫn chưa hiểu tại sao reference variable có tính 
       
