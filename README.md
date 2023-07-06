@@ -262,6 +262,8 @@
               // title in superclass: Chemistry
               // title in superclass: SubclassTitle
         ```
+## What I have learned on 6_7_2023
+## Inheritence (Continue)
 ## 2. Dynamic Method Dispatch
   - Em vẫn chưa hiểu trong cái method override   
   - Em vẫn chưa hiểu tại sao reference variable có tính 
