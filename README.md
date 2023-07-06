@@ -263,8 +263,135 @@
               // title in superclass: SubclassTitle
         ```
 ## What I have learned on 6_7_2023
-## Inheritence (Continue)
-## 2. Dynamic Method Dispatch
-  - Em vẫn chưa hiểu trong cái method override   
-  - Em vẫn chưa hiểu tại sao reference variable có tính 
+## Enumerations, Authoboxing, and Annotations
+## 1. Enumerations
+  - ## **Enumeration Fundamentals**
+    - **Enum** is a special data type along with other primitive data types such as (int, String, boolean) that allows its variable could be a set of predefined constants.
+    - Because **Enum** contains all constant variables -> The name must be UPPERCASE.
+    - An **enumeration value** can also be used to control a **switch** statement
+    - Let's take a look through the example of different genres of Novel
+    - First I am going to create **enum** class
+      ```java
+      // An enumeration of genre varieties
+      enum NovelGenre {
+        FICTION("fiction"),
+        NON_FICTION("non_fiction"),
+        SCIENCE_FICTION("science_fiction"),
+        MYSTERY("mystery");
+        private final String genre;
+        NovelGenre(String genre) {
+            this.genre = genre;
+        }
+        public String getGenre(){
+            return genre;
+        }
+      }
+      ```
+    - Then I am going to create **Novel** class
+      ```java
+      // Class Novel
+      static class Novel {
+          private String title;
+          private NovelGenre genre;
+          // Constructor Novel
+          Novel(String title, NovelGenre genre) {
+              this.title = title;
+              this.genre = genre;
+          }
+          // Get title of the novel
+          String getTitle() {
+              return title;
+          }
+          // Get genre of the novel
+          NovelGenre getGenre() {
+              return genre;
+          }
+          // Override the toString() method
+          @Override
+          public String toString() {
+              return "Novel{" +
+                      "title='" + title + '\'' +
+                      ", genre=" + genre.getGenre() +
+                      '}';
+          }
+          // use switch case to check 
+          public static void printNovelType(Novel novel) {
+              switch (novel.genre) {
+                  case FICTION:
+                      System.out.println(novel.getTitle() + " is a fiction novel.");
+                      break;
+                  case NON_FICTION:
+                      System.out.println(novel.getTitle() + " is a non-fiction novel.");
+                      break;
+                  case SCIENCE_FICTION:
+                      System.out.println(novel.getTitle() + " is a science-fiction novel.");
+                      break;
+                  case MYSTERY:
+                      System.out.println(novel.getTitle() + " is a mystery novel.");
+                      break;
+              }
+          }
+          public static void main(String[] args) {
+              Novel novel1 = new Novel("Pride and Prejudice", NovelGenre.FICTION);
+              Novel novel2 = new Novel("Harry Potter", NovelGenre.SCIENCE_FICTION);
+              System.out.println(novel1.toString());
+              System.out.println(novel2.toString());
+              printNovelType(novel1);
+              printNovelType(novel2);
+              // This is the output:
+              //Novel{title='Pride and Prejudice', genre=fiction}
+              //Novel{title='Harry Potter', genre=science_fiction}
+              //Pride and Prejudice is a fiction novel.
+              //Harry Potter is a science-fiction novel.
+          }
+      }
+      ```
+  - ## **The values( ) and valueOf( ) Methods**
+    - The **values()** method returns an array that contains a list of the enumeration constants.
+    - The **valueOf(String str)** return the value of enumeration constant of that string parameter.
+      ```java
+        public static void main(String[] args) {
+          // use values()
+          NovelGenre allGenre [] = NovelGenre.values();
+          for (NovelGenre g : allGenre) {
+              System.out.println(g);
+          }
+          // use valueOf()
+          NovelGenre genre = NovelGenre.valueOf("FICTION");
+          System.out.println("genre contains " + genre.getGenre());
+        }
+        // This is the output:
+        // FICTION
+        // NON_FICTION
+        // SCIENCE_FICTION
+        // MYSTERY
+        // genre contains fiction
+      ```
+  - ## **Treating Java Enumerations as Class Types**
+    - Each enumeration constant is an **object** of its **enumeration type**
+    - When we define a constructor for an enum, the constructor is called when each constants is invoked
+      ```java
+      // An enumeration of genre varieties
+      enum NovelGenre {
+        FICTION("fiction"),
+        NON_FICTION("non_fiction"),
+        SCIENCE_FICTION("science_fiction"),
+        MYSTERY("mystery");
+        private final String genre;
+        NovelGenre(String genre) {
+            this.genre = genre;
+        }
+        public String getGenre(){
+            return genre;
+        }
+        }
+        class Novel{
+          NovelFenre genre;
+          // Display value of Fiction
+          System.out.println("This is a " + getGenre + " Novel");
+        }
+        // this is the output:
+        // This is a fiction Novel
+      ```
+  
       
