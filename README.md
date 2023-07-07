@@ -397,8 +397,9 @@
 ## Stream in java 8 (New updated Technology of java 8)
   - In order to understand Stream, we firstly need to have basic knowledge of (lambda expressions, Optional, method refernces and Stream API))
   - ## 1. Stream API
-    - In java 8, the Sream API was introduced to perform some complex operations to deal with collection of data (Deal with big data of collection or array)
-    - The **java.util.stream** library contain classes for processing **sequences of elements**.
+    - In **java 8**, the **Stream API** was introduced to perform some complex operations to deal with collection of data (Deal with big data of collection or array)
+    - The **java.util.stream** library contain **classes** for processing sequences of **elements**.
+    - **Stream** is neither **data structure** or **data storage** -> it **can not modify** the **data source**
     - Stream also offer some operation such as filtering , mapping, reducing and sorting to solve complex data.
     - Stream will contain **collection** or **array**.
     - **Stream Creation**
@@ -431,11 +432,31 @@
       - **Stream of Array**
         ```java
         String[] arrayFruit = {"apple", "banana","oragange"}; // initialize an array
-        //Stream of Array
+        //Stream of exiting Array
         Stream<String> streamOfArrayFull = Arrays.stream(arrayFruit); // take the full array
         Stream<String> streamOfArrayPart = Arrays.stream(arrayFruit, 1, 3); // take the part of Array
+        // Create a Stream directly from the exited or new sequence of elements 
+        Stream<String> streamDirectly = Stream.of("apple", "banana", "orange");
+        
         streamOfArrayPart.forEach(System.out :: println);
         // Output:
         // banana
         // orange
         ```
+      - **Stream builder**
+        - It allows to build and create a stream incrementally by adding elements dynamically.
+          ```java
+          // Initialize Stream Builder
+          Stream.Builder<String> streamBuilder = Stream.builder();
+          // Add to Stream Builder
+          streamBuilder.add("apple")
+                  .add("banana")
+                  .add("orange");
+          // Build Stream 
+          Stream<String> stream = streamBuilder.build();
+          stream.forEach(System.out :: println);
+          // Output:
+          //apple
+          // banana
+          // orange
+          ``` 
