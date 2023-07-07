@@ -469,7 +469,16 @@
             }
             ```     
               - This is **Java Streams** that allows you to filter elements of a stream based on the filter(**predicate**).
-              - Let's define what is **Predicate** in the parameter of **filter(Predicate<T> predicate)** method.
-              - **Predicate** is a **functional interface** (_i.e the interface that contains abstract method which does not have body_) and it has the abstract method called **test()**, which take input of type T
-                ```java
-                ``` 
+              - Let's define what is **Predicate** in the parameter of **filter(Predicate&lt;T&gt; predicate)** method.
+               ```java
+                @FunctionalInterface
+                public interface Predicate<T> {
+                  boolean test(T t); //abstract method
+                }
+               ``` 
+              - **Predicate** is a **functional interface** (_i.e the interface that contains abstract method which does not have body_) and it will override the abstract method called **test()**, which take input of type T, for every time a **Predicate** interface is initialized.
+              - Let's take a simple example without using lambda **(->)** because lambda it will automatically run the override **test()** method.
+              ```java
+              
+              ```
+            
