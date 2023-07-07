@@ -459,4 +459,17 @@
           //apple
           // banana
           // orange
-          ``` 
+          ```
+    - **Stream intermediate operation**
+      -  Here is the part where **bulk operations** (_complex tasks_) are performed.
+          - **filter(Predicate<T> predicate)**
+            ```java
+            public interface Stream<T> extends BaseStream<T, Stream<T>> {
+              Stream<T> filter(Predicate<? super T> predicate);
+            }
+            ```     
+              - This is **Java Streams** that allows you to filter elements of a stream based on the filter(**predicate**).
+              - Let's define what is **Predicate** in the parameter of **filter(Predicate<T> predicate)** method.
+              - **Predicate** is a **functional interface** (_i.e the interface that contains abstract method which does not have body_) and it has the abstract method called **test()**, which take input of type T
+                ```java
+                ``` 
