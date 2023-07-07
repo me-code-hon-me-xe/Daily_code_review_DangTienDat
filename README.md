@@ -406,19 +406,36 @@
          ```java
          // This is an empty Stream
          Stream<String> emptyStream = Stream.enpty();
-         
          // we should use **Stream.empty()** method before creation
          // to avoid returning null when no element is added
          public Stream<String> streamOf(List<String> list){
-             // This is normal way of if condtition
-             if(list == null || list.isEmpty()){
-                return Stream.empty()
-             }
-             return list.stream();
-             // Or you can use lambda expression to tidy your code
-             return list = null || list.isEmpty() ? Stream.empty() : list.stram();
+            // This is normal way of if condtition
+            if(list == null || list.isEmpty()){
+                return Stream.empty();
+            }
+            return list.stream();
+            // Or you can use lambda expression to tidy your code
+            // return list == null || list.isEmpty() ? Stream.empty() : list.stream();
          }
          ```
       - **Stream of Collection**
+        - We can also create a stream of any type of ***Collection***(Collection, List, Set)
         ```java
+        // Create an empty String to avoid returning null for streams with no element
+        Stream<String> emptyString = Stream.empty();
+        // We can also create a stream of any type of Collection (Collection, List, Set):
+        String[] arrayFruit = {"apple", "banana","oragange"}; // initialize an array
+        Collection<String> collection = Arrays.asList(arrayFruit); 
+        Stream<String> streamOfColletion = collection.stream();
+        ```
+      - **Stream of Array**
+        ```java
+        String[] arrayFruit = {"apple", "banana","oragange"}; // initialize an array
+        //Stream of Array
+        Stream<String> streamOfArrayFull = Arrays.stream(arrayFruit); // take the full array
+        Stream<String> streamOfArrayPart = Arrays.stream(arrayFruit, 1, 3); // take the part of Array
+        streamOfArrayPart.forEach(System.out :: println);
+        // Output:
+        // banana
+        // orange
         ```
