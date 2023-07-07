@@ -393,5 +393,32 @@
         // this is the output:
         // This is a fiction Novel
       ```
-  
-      
+## What I have learned on 7_7_2023
+## Stream in java 8 (New updated Technology of java 8)
+  - In order to understand Stream, we firstly need to have basic knowledge of (lambda expressions, Optional, method refernces and Stream API))
+  - ## 1. Stream API
+    - In java 8, the Sream API was introduced to perform some complex operations to deal with collection of data (Deal with big data of collection or array)
+    - The **java.util.stream** library contain classes for processing **sequences of elements**.
+    - Stream also offer some operation such as filtering , mapping, reducing and sorting to solve complex data.
+    - Stream will contain **collection** or **array**.
+    - **Stream Creation**
+       - **Empty Stream**
+         ```java
+         // This is an empty Stream
+         Stream<String> emptyStream = Stream.enpty();
+         
+         // we should use **Stream.empty()** method before creation
+         // to avoid returning null when no element is added
+         public Stream<String> streamOf(List<String> list){
+             // This is normal way of if condtition
+             if(list == null || list.isEmpty()){
+                return Stream.empty()
+             }
+             return list.stream();
+             // Or you can use lambda expression to tidy your code
+             return list = null || list.isEmpty() ? Stream.empty() : list.stram();
+         }
+         ```
+      - **Stream of Collection**
+        ```java
+        ```
