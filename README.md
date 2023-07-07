@@ -479,6 +479,25 @@
               - **Predicate** is a **functional interface** (_i.e the interface that contains abstract method which does not have body_) and it will override the abstract method called **test()**, which take input of type T, for every time a **Predicate** interface is initialized.
               - Let's take a simple example without using lambda **(->)** because lambda it will automatically run the override **test()** method.
               ```java
-              
+              public class StreamDemo{
+                public static void main (String[] args){
+                  // initialize an Integer array
+                  Integer[] numbers = {1,2,3,4,5,6};
+                  // Put into the stream
+                  Stream<Integer> streamNumbers = Arrays.stream(numbers);
+                  List<Integer> evenNumbers = streamNumbers.filter(new Predicate<Integer>() {
+                    // override method test in the interface Predicate
+                    @Override
+                    public boolean test(Integer integer){
+                      return integer % 2 == 0;
+                    }
+                  }).collect(Collectors.toList()); // Collect the filtered elements into a new list
+                  evenNumbers.forEach(System.out::println);
+                }
+                // Output:
+                // 2
+                // 4
+                // 6
+              }
               ```
             
