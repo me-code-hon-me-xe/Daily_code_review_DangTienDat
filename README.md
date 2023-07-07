@@ -421,14 +421,14 @@
          ```
       - **Stream of Collection**
         - We can also create a stream of any type of ***Collection***(Collection, List, Set)
-        ```java
-        // Create an empty String to avoid returning null for streams with no element
-        Stream<String> emptyString = Stream.empty();
-        // We can also create a stream of any type of Collection (Collection, List, Set):
-        String[] arrayFruit = {"apple", "banana","oragange"}; // initialize an array
-        Collection<String> collection = Arrays.asList(arrayFruit); 
-        Stream<String> streamOfColletion = collection.stream();
-        ```
+          ```java
+          // Create an empty String to avoid returning null for streams with no element
+          Stream<String> emptyString = Stream.empty();
+          // We can also create a stream of any type of Collection (Collection, List, Set):
+          String[] arrayFruit = {"apple", "banana","oragange"}; // initialize an array
+          Collection<String> collection = Arrays.asList(arrayFruit); 
+          Stream<String> streamOfColletion = collection.stream();
+          ```
       - **Stream of Array**
         ```java
         String[] arrayFruit = {"apple", "banana","oragange"}; // initialize an array
@@ -463,41 +463,62 @@
     - **Stream intermediate operation**
       -  Here is the part where **bulk operations** (_complex tasks_) are performed.
           - **filter(Predicate<T> predicate)**
-            ```java
-            public interface Stream<T> extends BaseStream<T, Stream<T>> {
-              Stream<T> filter(Predicate<? super T> predicate);
-            }
-            ```     
+              ```java
+              public interface Stream<T> extends BaseStream<T, Stream<T>> {
+                Stream<T> filter(Predicate<? super T> predicate);
+              }
+              ```     
               - This is **Java Streams** that allows you to filter elements of a stream based on the filter(**predicate**).
               - Let's define what is **Predicate** in the parameter of **filter(Predicate&lt;T&gt; predicate)** method.
-               ```java
-                @FunctionalInterface
-                public interface Predicate<T> {
-                  boolean test(T t); //abstract method
-                }
-               ``` 
+                 ```java
+                  @FunctionalInterface
+                  public interface Predicate<T> {
+                    boolean test(T t); //abstract method
+                  }
+                 ``` 
               - **Predicate** is a **functional interface** (_i.e the interface that contains abstract method which does not have body_) and it will override the abstract method called **test()**, which take input of type T, for every time a **Predicate** interface is initialized.
               - Let's take a simple example without using lambda **(->)** because lambda it will automatically run the override **test()** method.
-              ```java
-              public class StreamDemo{
-                public static void main (String[] args){
-                  // initialize an Integer array
-                  Integer[] numbers = {1,2,3,4,5,6};
-                  // Put into the stream
-                  Stream<Integer> streamNumbers = Arrays.stream(numbers);
-                  List<Integer> evenNumbers = streamNumbers.filter(new Predicate<Integer>() {
-                    // override method test in the interface Predicate
-                    @Override
-                    public boolean test(Integer integer){
-                      return integer % 2 == 0;
-                    }
-                  }).collect(Collectors.toList()); // Collect the filtered elements into a new list
-                  evenNumbers.forEach(System.out::println);
+                ```java
+                public class StreamDemo{
+                  public static void main (String[] args){
+                    // initialize an Integer array
+                    Integer[] numbers = {1,2,3,4,5,6};
+                    // Put into the stream
+                    Stream<Integer> streamNumbers = Arrays.stream(numbers);
+                    // Operate the filter operation of stream
+                    List<Integer> evenNumbers = streamNumbers.filter(new Predicate<Integer>() {
+                      // override method test in the interface Predicate
+                      @Override
+                      public boolean test(Integer integer){
+                        return integer % 2 == 0;
+                      }
+                    }).collect(Collectors.toList()); // Collect the filtered elements into a new list
+                    evenNumbers.forEach(System.out::println);
+                  }
+                  // Output:
+                  // 2
+                  // 4
+                  // 6
                 }
-                // Output:
-                // 2
-                // 4
-                // 6
-              }
-              ```
+                ```
+              - Okay then, after you understand how the code is performed internally, now you could move to the lambda expression version.
+              - Down below is the respective code like above. However I will use lambda expression **(->)**
+                ```java
+                public class StreamDemo{
+                  public static void main (String[] args){
+                    // initialize an Integer array
+                    Integer[] numbers = {1,2,3,4,5,6};
+                    // Put into the stream
+                    Stream<Integer> streamNumbers = Arrays.stream(numbers);
+                    // Operate the filter operation of stream
+                    List<Integer> evenNumbers = streamNumbers.filter(integer -> integer % 2 == 0)
+                                                             .collect(Collectors.toList()); // Collect the filtered elements into a new list
+                    evenNumbers.forEach(System.out::println);
+                  }
+                  // Output:
+                  // 2
+                  // 4
+                  // 6
+                }
+                ```
             
