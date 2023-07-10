@@ -567,6 +567,23 @@
          // Here is banana
          // Here is orange
            ```
+       - Down below is the respective code like above. However I will use lambda expression **(->)**
+         ```java
+         public class StreamAPI {
+          public static void main(String[] args) {
+          // Create an array of String object
+          String[] fruit = {"apple", "banana", "orange"};
+          // Stream directly from the array using Stream.of();
+          Stream<String> streamDirectly = Stream.of(fruit[0], fruit[1], fruit[2]);
+          List<String> newMap = streamDirectly.map(fruits -> "Here is " + fruits).collect(Collectors.toList());
+          newMap.forEach(System.out::println);
+          }
+         }
+         // Output:
+         // Here is apple
+         // Here is banana
+         // Here is orange
+         ```
 						
 						
       
