@@ -526,7 +526,7 @@
 - ## 1. Stream API (Continued)
   - **Stream intermediate operation**
     -  Here is the part where **bulk operations** (_complex tasks_) are performed.
-			-  **map(Function&lt;? super T, ? extends R&gt; mapper)**
+	-  **map(Function&lt;? super T, ? extends R&gt; mapper)**
        ```java
        public interface Stream<T> extends BaseStream<T, Stream<T>> {
          <R> Stream<R> map(Function<? super T, ? extends R> mapper);
@@ -583,8 +583,8 @@
          // Here is apple
          // Here is banana
          // Here is orange
-         ```
-						
-						
-      
-    
+         ```			
+- ## 2. Thread in java				
+  - **Java Memory Model**
+    - **The Internal Java Memory Model**
+    - The Java memory model used internally in the JVM in which thread stacks and the heaps are seperated.
