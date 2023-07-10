@@ -462,13 +462,13 @@
           ```
     - **Stream intermediate operation**
       -  Here is the part where **bulk operations** (_complex tasks_) are performed.
-          - **filter(Predicate<T> predicate)**
+          - **filter(Predicate &lt;? super T&gt; predicate)**
               ```java
               public interface Stream<T> extends BaseStream<T, Stream<T>> {
                 Stream<T> filter(Predicate<? super T> predicate);
               }
               ```     
-              - This is **Java Streams** that allows you to filter elements of a stream based on the filter(**predicate**).
+              - This is **Java Streams** that allows you to filter elements of a stream based on the **filter(Predicate &lt;? super T&gt; predicate)**.
               - Let's define what is **Predicate** in the parameter of **filter(Predicate&lt;T&gt; predicate)** method.
                  ```java
                   @FunctionalInterface
@@ -521,4 +521,70 @@
                   // 6
                 }
                 ```
-            
+## What I have learned on 10_7_2023
+## Stream in java 8 (New updated Technology of java 8)
+- ## 1. Stream API (Continued)
+  - **Stream intermediate operation**
+    -  Here is the part where **bulk operations** (_complex tasks_) are performed.
+	-  **map(Function&lt;? super T, ? extends R&gt; mapper)**
+       ```java
+       public interface Stream<T> extends BaseStream<T, Stream<T>> {
+         <R> Stream<R> map(Function<? super T, ? extends R> mapper);
+       }
+       ```
+       - In this **map()** funtion, we can see that it has two parameter **`<? super T & ? extends R>`**. So what is **`( ?, super T, extends R )`**
+       - The **`?`** symbol is used as a wildcard character to represent an unknown type.
+       - The **`super T`** type constraint in **`<? super T>`** indicates that the mapper function can accept a type that is either **`T`** or a **super** type of **T**.
+       - The **`extends R`** type constraint in **`<? extends R>`** indicates that the mapper function can return a type that is either **R** or **subtype (i.e a class that extends or implements R)** type of **R**. 
+       - This is **Java Streams** that allows you to transforms each element of a given stream using a provided function and produces a new stream with the transformed elements based on the filter **apply()**.
+       - Let's define what is **Function** in the parameter of **`map(Function<? super T, ? extends R> mapper)`** method.
+         ```java
+         @FunctionalInterface
+         public interface Function<T, R> {
+           R apply(T t);
+         }
+         ```
+       - **Function** is a **functional interface** (_i.e the interface that contains abstract method which does not have body_) and it will override the abstract method called **apply()**, which take input of type T and return the output of type R, for every time a **Function** interface is initialized.
+       - Let's take a simple example without using lambda **(->)** because lambda it will automatically run the override **apply()** method.
+         ```java
+         public class StreamAPI {
+          public static void main(String[] args) {
+          // Create an array of String object
+          String[] fruit = {"apple", "banana", "orange"};
+          // Stream directly from the array using Stream.of();
+          Stream<String> streamDirectly = Stream.of(fruit[0], fruit[1], fruit[2]);
+          List<String> newMap = streamDirectly.map(new Function<String, String>() {
+              @Override
+              public String apply(String s) {
+                  return "Here is " + s;
+              }
+          }).collect(Collectors.toList());
+          newMap.forEach(System.out::println);
+          }
+         }
+         // Output:
+         // Here is apple
+         // Here is banana
+         // Here is orange
+           ```
+       - Down below is the respective code like above. However I will use lambda expression **(->)**
+         ```java
+         public class StreamAPI {
+          public static void main(String[] args) {
+          // Create an array of String object
+          String[] fruit = {"apple", "banana", "orange"};
+          // Stream directly from the array using Stream.of();
+          Stream<String> streamDirectly = Stream.of(fruit[0], fruit[1], fruit[2]);
+          List<String> newMap = streamDirectly.map(fruits -> "Here is " + fruits).collect(Collectors.toList());
+          newMap.forEach(System.out::println);
+          }
+         }
+         // Output:
+         // Here is apple
+         // Here is banana
+         // Here is orange
+         ```			
+- ## 2. Thread in java				
+  - **Java Memory Model**
+    - **The Internal Java Memory Model**
+    - The Java memory model used internally in the JVM in which thread stacks and the heaps are seperated.
