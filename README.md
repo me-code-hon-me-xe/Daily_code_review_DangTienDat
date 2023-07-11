@@ -588,3 +588,8 @@
   - **Java Memory Model**
     - **The Internal Java Memory Model**
     - The Java memory model used internally in the JVM in which thread stacks and the heaps are seperated.
+## What I have learned on 10_7_2023
+## LRU Cache
+  - **The Least Recently Used(LRU) cache** 
+
+
