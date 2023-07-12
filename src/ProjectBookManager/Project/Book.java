@@ -1,4 +1,4 @@
-package Day11_7_2023.Project;
+package ProjectBookManager.Project;
 
 public class Book {
     private int bookId;
@@ -43,5 +43,15 @@ public class Book {
 
     public void setBookYearPublish(int bookYearPublish) {
         this.bookYearPublish = bookYearPublish;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId=" + bookId +
+                ", bookTitle='" + bookTitle + '\'' +
+                ", bookAuthor='" + bookAuthor + '\'' +
+                ", bookYearPublish=" + bookYearPublish +
+                '}';
     }
 }
