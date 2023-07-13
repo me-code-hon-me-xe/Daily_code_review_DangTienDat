@@ -13,34 +13,39 @@ public class SystemManagement {
                 + "2. Updating \n"
                 + "3. Deleting \n"
                 + "4. Searching \n"
-                + "Please choose your options: \n");
-        if (scanner.hasNextInt()) {
-            userInputNumber = scanner.nextInt();
-            scanner.nextLine();
-            try {
-                switch (userInputNumber) {
-                    case 1:
-                        inserting();
-                        break;
-                    case 2:
-                        updating();
-                        break;
-                    case 3:
-                        deleting();
-                        break;
-                    case 4:
-                        searching();
-                        break;
-                    default:
-                        validateChoice();
+                + "Please choose your options:");
+        try {
+            if (scanner.hasNextInt()) {
+                userInputNumber = scanner.nextInt();
+                scanner.nextLine();
+                try {
+                    switch (userInputNumber) {
+                        case 1:
+                            inserting();
+                            break;
+                        case 2:
+                            updating();
+                            break;
+                        case 3:
+                            deleting();
+                            break;
+                        case 4:
+                            searching();
+                            break;
+                        default:
+                            validateChoice();
+                    }
+                } catch (Exception e) {
+                    System.out.println("An error occurred: " + e.getMessage());
                 }
-            } catch (Exception e) {
-                System.out.println("An error occurred: " + e.getMessage());
+            } else {
+                String input = scanner.nextLine();
+                throw new IllegalArgumentException("Invalid input: " + input + ". Please enter a valid number.");
             }
-        } else {
-            String input = scanner.nextLine();
-            throw new IllegalArgumentException("Invalid input: " + input + ". Please enter a valid number.");
-        }
+        }catch (Exception e){
+            System.out.println("An error occurred: " + e.getMessage());
+        };
+
 
     }
 
