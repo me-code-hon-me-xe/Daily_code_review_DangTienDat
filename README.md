@@ -590,6 +590,10 @@
     - The Java memory model used internally in the JVM in which thread stacks and the heaps are seperated.
 ## What I have learned on 10_7_2023
 ## LRU Cache
-  - **The Least Recently Used(LRU) cache** 
+  - **The Least Recently Used(LRU) cache**
+  - Check my **project book management**, in there I made a comparison of time consumption when a search function is implemented in the cache and in the database, which one then will be faster.
 
-
+## What I have learned on 10_7_2023
+  - **The Bloom filter**</br>
+    - Bloom filter has three components: Bloom filter, Bit Array, Hash Function.
+    - BitArray has a fixed-size array of bits(0s and 1s)
