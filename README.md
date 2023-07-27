@@ -597,3 +597,8 @@
   - **The Bloom filter**</br>
     - Bloom filter has three components: Bloom filter, Bit Array, Hash Function.
     - BitArray has a fixed-size array of bits(0s and 1s)
+      
+## What I have learned on 27_7_2023
+## Today, I learn about JDBC (Java Database Connectivity)
+  - **Direction:** we will build core JDBC such as (CREATE, READ, UPDATE, DELETE) in order to query data from the database in java runtime environment, so that we can use it permanantly like some basic query such as (SELECT, INSERT, UPDATE, DELETE) in SQL.
+  - **Preparation:** Load driver MySQL to the dependencies 
