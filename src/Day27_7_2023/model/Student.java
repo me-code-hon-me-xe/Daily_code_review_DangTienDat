@@ -1,6 +1,7 @@
 package Day27_7_2023.model;
 
 import java.sql.Time;
+import java.time.LocalDateTime;
 
 public class Student {
     private int id;
@@ -11,11 +12,41 @@ public class Student {
     private String email;
     private String phone;
     private String address;
-    private Time created_at;
-    private Time updated_at;
+    private LocalDateTime created_at;
+    private LocalDateTime updated_at;
+    public Student() {
+    }
+    public Student(int id, String first_name, String last_name, int age, String gender, String email, String phone, String address, LocalDateTime created_at, LocalDateTime updated_at) {
+        this.id = id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.age = age;
+        this.gender = gender;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
+    }
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", created_at=" + created_at +
+                ", updated_at=" + updated_at +
+                '}';
     }
 
     public void setId(int id) {
@@ -78,34 +109,19 @@ public class Student {
         this.address = address;
     }
 
-    public Time getCreated_at() {
+    public LocalDateTime getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(Time created_at) {
+    public void setCreated_at(LocalDateTime created_at) {
         this.created_at = created_at;
     }
 
-    public Time getUpdated_at() {
+    public LocalDateTime getUpdated_at() {
         return updated_at;
     }
 
-    public void setUpdated_at(Time updated_at) {
+    public void setUpdated_at(LocalDateTime updated_at) {
         this.updated_at = updated_at;
     }
-
-    public Student(int id, String first_name, String last_name, int age, String gender, String email, String phone, String address, Time created_at, Time updated_at) {
-        this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.age = age;
-        this.gender = gender;
-        this.email = email;
-        this.phone = phone;
-        this.address = address;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
-    }
-
-
 }
