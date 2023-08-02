@@ -1,8 +1,6 @@
-package ProjectBookManagerJDBC.Controller;
+package ProjectBookManagerJDBC.controller;
 
 import ProjectBookManagerJDBC.service.BookService;
-
-import java.util.Scanner;
 
 public class SystemController {
 
