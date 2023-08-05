@@ -11,9 +11,4 @@ public interface RepositoryInterface<T> {
 
     ArrayList<T> selectAll();
 
-    T selectById(T t);
-
-    default ArrayList<T> selectByCondition(String condtition) {
-        return new ArrayList<T>();
-    };
 }

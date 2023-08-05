@@ -4,16 +4,17 @@ import ProjectBookManagerJDBC.service.BookService;
 
 public class SystemController {
 
+    public static BookService bookService = new BookService();
     public static void searching() {
-        BookService.BookSearch.searchingBook();
+        bookService.search();
     }
     public static void  deleting() {
-        BookService.BookDelete.deletingBook();
+        bookService.delete();
     }
     public static void updating() {
-        BookService.BookUpdate.updatingBook();
+        bookService.update();
     }
     public static void inserting() {
-        BookService.BookInsert.insertingBook();
+        bookService.insert();
     }
 }

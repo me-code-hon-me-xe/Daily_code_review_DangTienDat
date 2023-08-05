@@ -1,11 +1,12 @@
 package ProjectBookManagerJDBC.view;
 
-import ProjectBookManagerJDBC.Controller.SystemController;
+import ProjectBookManagerJDBC.controller.SystemController;
 
 import java.util.Scanner;
 
 public class LibraryView {
     public static int userInputNumber;
+    public static SystemController systemController;
     public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         while (true) {
@@ -15,7 +16,7 @@ public class LibraryView {
 
 
     public static void runningMenu() {
-
+        systemController = new SystemController();
         System.out.println("This is library menu: \n"
                 + "1. Inserting\n"
                 + "2. Updating \n"
@@ -29,16 +30,16 @@ public class LibraryView {
                 try {
                     switch (userInputNumber) {
                         case 1:
-                            SystemController.inserting();
+                            systemController.inserting();
                             break;
                         case 2:
-                            SystemController.updating();
+                            systemController.updating();
                             break;
                         case 3:
-                            SystemController.deleting();
+                            systemController.deleting();
                             break;
                         case 4:
-                            SystemController.searching();
+                            systemController.searching();
                             break;
                         default:
                             validateChoice();

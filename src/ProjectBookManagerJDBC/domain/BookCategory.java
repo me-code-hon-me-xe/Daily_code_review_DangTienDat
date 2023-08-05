@@ -1,4 +1,4 @@
-package ProjectBookManagerJDBC.model;
+package ProjectBookManagerJDBC.domain;
 
 public class BookCategory {
     private int categoryId;
