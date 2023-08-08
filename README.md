@@ -605,5 +605,43 @@
 ## What I have learned on 8_7_2023
 ## Tight-coupling and how to loosely coupled 
   - **Definition:** Let's consider these examples
-  - **Loosely Coupled Car Parts:** Imagine your car toy is made of defferent parts: wheels, doors, roof, and engine. Now if you want to change the wheels, you just need to remove and replace them with other wheels wihout affecting other parts.
-  -  
+  - **Loosely Coupled Car Parts:** Imagine your car toy is made of defferent parts: wheels, doors, roof, and engine. Now if you want to change the wheels, you just need to remove and replace them with other wheels wihout affecting other parts.<br>
+```java
+    
+interface CarFixing {
+    void fix();
+}
+
+class CarDoor implements CarFixing {
+    @Override
+    public void fix() {
+        System.out.println("Đã sửa xong cửa");
+    }
+}
+class CarWheel implements CarFixing {
+    @Override
+    public void fix() {
+        System.out.println("Đã sửa xong bánh xe");
+    }
+}
+
+public class Factory {
+    CarFixing carFixing;
+    Factory(CarFixing carFixing){
+        this.carFixing = carFixing;
+    }
+    void fixingService(){
+        carFixing.fix();
+    }
+    public static void main(String[] args) {
+        CarFixing carDoor = new CarDoor();
+        CarFixing carWheel = new CarWheel();
+        Factory factory = new Factory(carWheel);
+        factory.fixingService();
+        Factory factory1 = new Factory(carDoor);
+        factory1.fixingService();
+    }
+}
+// Đã sửa xong bánh xe
+// Đã sửa xong cửa
+  ```
