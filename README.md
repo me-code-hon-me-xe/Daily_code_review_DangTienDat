@@ -645,3 +645,5 @@ public class Factory {
 // Đã sửa xong bánh xe
 // Đã sửa xong cửa
   ```
+=> So the class Factory only work with one interface "CarFixing" and do not worry about which part of the car will be fixed. Obviously, when initializing the main class, we need to define instances of those class implemantations, however, we can add or remove them seperately wihout changing the entire class "Factory"
+## Dependency Injection (DI)
