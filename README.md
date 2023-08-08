@@ -602,3 +602,8 @@
 ## Today, I learn about JDBC (Java Database Connectivity)
   - **Direction:** we will build core JDBC such as (CREATE, READ, UPDATE, DELETE) in order to query data from the database in java runtime environment, so that we can use it permanantly like some basic query such as (SELECT, INSERT, UPDATE, DELETE) in SQL.
   - **Preparation:** Load driver MySQL to the dependencies 
+## What I have learned on 8_7_2023
+## Tight-coupling and how to loosely coupled 
+  - **Definition:** Let's consider these examples
+  - **Loosely Coupled Car Parts:** Imagine your car toy is made of defferent parts: wheels, doors, roof, and engine. Now if you want to change the wheels, you just need to remove and replace them with other wheels wihout affecting other parts.
+  -  
