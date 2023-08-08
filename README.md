@@ -647,3 +647,46 @@ public class Factory {
   ```
 => So the class Factory only work with one interface "CarFixing" and do not worry about which part of the car will be fixed. Obviously, when initializing the main class, we need to define instances of those class implemantations, however, we can add or remove them seperately wihout changing the entire class "Factory"
 ## Dependency Injection (DI)
+  - **Constructor Injection**
+  -  In constructor injection, a class's dependencies put in the parameter of the constructor would be created when the class is initialized.<br>
+  ```java
+  /*
+   dependency class
+  */
+  public class Factory {
+    CarFixing carFixing;
+    Factory(CarFixing carFixing){ => "CarFixing" dependency will be created when "Factory" is initialized
+        this.carFixing = carFixing;
+    }
+    void fixingService(){
+        carFixing.fix();
+    }
+  /*
+    main class
+  */
+  ```
+ **Setter Injection**
+  -  In setter injection, a dependency Object would be set in the setter method of .<br>
+  ```java
+  /*
+    dependency classes
+  */
+  public class Factory {
+    CarFixing carFixing;
+    CarDecoration carDecoration;
+    setCarDecoration(CarDecoration carDecoration){ => "CarDecoration" dependency will be created whenever "setFactory" is called
+        this.carDecoration = carDecoration;
+    }
+    setCarFixing(CarFixing carFixing){ => "CarFixing" dependency will be created whenever "setFactory" is called
+        this.carFixing = carFixing;
+    }
+    void fixingService(){
+        carFixing.fix();
+    }
+    void decoratingService(){
+        carDecorating.decorate();
+    }
+  /*
+    main class
+  */
+  ```
