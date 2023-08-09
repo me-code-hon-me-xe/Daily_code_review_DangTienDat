@@ -695,6 +695,29 @@ public class Factory {
   */
   ```
  
-  **Spring IoC - IoC container**
-  - **IoC Container**
-  - **Application Context**
+  **Spring IoC**
+  - Spring will server for the purpose of creating container and dependency for us automatically. 
+  - **Application Context**: is the container in spring, it will manage all the class with @Component annotation as its bean.
+    ```java
+	public static void main(String[] args) {
+
+		// Like normal, in this part we will initialize Instance of classes
+		// For example:
+		// CarFixing carFixing1 = new CarDoor();
+		// Factory factory = new Factory(carFixing1);
+		// However when we put annotation @Component, the system will identify those classes as its bean, and
+		// automatically generate their instances
+		ApplicationContext context = SpringApplication.run(ProjectApplication.class, args);
+	
+	
+		// test after instance is initialized
+		Factory factory = context.getBean(Factory.class);
+		System.out.println(factory);
+		CarDoor carDoor = context.getBean(CarDoor.class);
+		System.out.println(carDoor);
+	
+		// result:
+		//com.springboot.project.Factory@4c361f63
+		//com.springboot.project.CarDoor@6ed922e1
+	}
+    ```
