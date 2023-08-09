@@ -646,7 +646,11 @@ public class Factory {
 // Đã sửa xong cửa
   ```
 => So the class Factory only work with one interface "CarFixing" and do not worry about which part of the car will be fixed. Obviously, when initializing the main class, we need to define instances of those class implemantations, however, we can add or remove them seperately wihout changing the entire class "Factory"
-## Dependency Injection (DI)
+## **Inversion of control (IOC)**:
+-  Unlike traditional style of code where code are called from library. However, with IoC, IoC containers would inject those dependencies when Bean is created
+## Dependency Injection (DI):
+- when we have two object (class B & class C) and we use class A to create instances of both class => this is called class B & C depend on class A, because without class A => B & C can not created. Therefore, people think about a present general class D (i.e: interface or abstract class) to represent for class B & C so that class A can only work with class representer D. => So even we change the behavior of B & C => A is not affected.
+- We have 3 types of Injection: 
   - **Constructor Injection**
   -  In constructor injection, a class's dependencies put in the parameter of the constructor would be created when the class is initialized.<br>
   ```java
@@ -690,3 +694,7 @@ public class Factory {
     main class
   */
   ```
+ 
+  **Spring IoC - IoC container**
+  - **IoC Container**
+  - **Application Context**
