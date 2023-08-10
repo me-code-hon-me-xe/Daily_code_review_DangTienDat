@@ -721,3 +721,56 @@ public class Factory {
 		//com.springboot.project.CarDoor@6ed922e1
 	}
     ```
+  - **Qualifier**
+	  ```java
+	  public interface CarFixing {
+    		void fix();
+	  }
+   
+	@Component("CarDoor")
+	public class CarDoor implements CarFixing{
+	    @Override
+	    public void fix() {
+	        System.out.println("Đã sửa xong cánh cửa của xe");
+	    }
+	}
+
+	@Component("CarWheel")
+	public class CarWheel implements CarFixing{
+	    @Override
+	    public void fix() {
+	        System.out.println("Đã sửa xong banh của xe");
+	    }
+	}
+
+	 @Component
+	public class Factory {
+	    CarFixing carFixing;
+	    CarFixing carFixing1;
+	
+	    public Factory(@Qualifier("CarDoor") CarFixing carFixing, @Qualifier("CarWheel") CarFixing carFixing1) {
+	        this.carFixing = carFixing;
+	        this.carFixing1 = carFixing1;
+	    }
+	
+	    public void carService() {
+	        carFixing.fix();
+	        carFixing1.fix();
+	    }
+	}
+	 
+	@SpringBootApplication
+	public class ProjectApplication {
+	    public static void main(String[] args) {
+	        ApplicationContext context = SpringApplication.run(ProjectApplication.class, args);
+	
+	        Factory factory = context.getBean(Factory.class);
+	        System.out.println(factory);
+	        factory.carService();
+	    }
+	}
+ 	// results:
+	// com.springboot.project.Factory@1455154c
+	// Đã sửa xong cánh cửa của xe
+	// Đã sửa xong banh của xe
+	  ```
