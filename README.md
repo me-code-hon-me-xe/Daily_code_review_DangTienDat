@@ -804,5 +804,88 @@ public class Factory {
 	        System.out.println("Sau khi ham bi Bean factory xoa");
 	    }
 	}
-
   	```
+   - **Component && Service && Repository**
+   ```java
+	@Component
+	public class Car {
+	    private int id;
+	    private String make;
+	    private String model;
+	
+	    public Car() {
+	    }
+	
+	    public Car(int id, String make, String model) {
+	        this.id = id;
+	        this.make = make;
+	        this.model = model;
+	    }
+	
+	    public int getId() {
+	        return id;
+	    }
+	
+	    public void setId(int id) {
+	        this.id = id;
+	    }
+	
+	    public String getmake() {
+	        return make;
+	    }
+	
+	    public void setmake(String make) {
+	        this.make = make;
+	    }
+	
+	    public String getModel() {
+	        return model;
+	    }
+	
+	    public void setModel(String model) {
+	        this.model = model;
+	    }
+	
+	    @Override
+	    public String toString() {
+	        return "Car{" +
+	                "id=" + id +
+	                ", make='" + make + '\'' +
+	                ", model='" + model + '\'' +
+	                '}';
+	    }
+	}
+
+	@Repository
+	public class CarRepository {
+	    public Car findCarById(int id) {
+	        // truy suat vao co so du lieu
+	
+	        return new Car(id,"Toyota", "A129");
+	    }
+	}
+ 
+	@Service
+	public class CarService {
+	    @Autowired
+	    CarRepository carRepository;
+	
+	    public Car getCarByIdUppercaseModel(int id) {
+	        Car car = carRepository.findCarById(id);
+	        car.setmake(car.getmake().toUpperCase());
+	        return car;
+	    }
+	}
+
+	@SpringBootApplication
+	public class App {
+	    public static void main(String[] args) {
+	        ApplicationContext context = SpringApplication.run(App.class, args);
+	        CarService carService = context.getBean(CarService.class);
+	        int id = 1;
+	        Car car = carService.getCarByIdUppercaseModel(id);
+	        System.out.println(car.toString());
+	    }
+	}
+
+   ```
