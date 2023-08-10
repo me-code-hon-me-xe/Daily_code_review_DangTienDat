@@ -721,7 +721,10 @@ public class Factory {
 		//com.springboot.project.CarDoor@6ed922e1
 	}
     ```
-  - **Qualifier**
+
+  - **Autowired**: This part i forgot to commit, then I lost it, i will add it later
+  
+  - **Qualifier**: When we use @Qualifier, we are not allowed to use @Autowired
 	  ```java
 	  public interface CarFixing {
     		void fix();
@@ -734,7 +737,7 @@ public class Factory {
 	        System.out.println("Đã sửa xong cánh cửa của xe");
 	    }
 	}
-
+  
 	@Component("CarWheel")
 	public class CarWheel implements CarFixing{
 	    @Override
@@ -745,7 +748,7 @@ public class Factory {
 
 	 @Component
 	public class Factory {
-	    CarFixing carFixing;
+  	    CarFixing carFixing;
 	    CarFixing carFixing1;
 	
 	    public Factory(@Qualifier("CarDoor") CarFixing carFixing, @Qualifier("CarWheel") CarFixing carFixing1) {
@@ -757,7 +760,7 @@ public class Factory {
 	        carFixing.fix();
 	        carFixing1.fix();
 	    }
-	}
+  	}
 	 
 	@SpringBootApplication
 	public class ProjectApplication {
@@ -774,3 +777,32 @@ public class Factory {
 	// Đã sửa xong cánh cửa của xe
 	// Đã sửa xong banh của xe
 	  ```
+  - **PostConstruct && PreDestroy**
+  	```java
+  	@Component
+	public class Car {
+	    @PostConstruct
+	    public void postConstruct() {
+	        System.out.println("Ham duoc goi sau khi in Car");
+	    }
+	
+	    @PreDestroy
+	    public void preDestroy() {
+	        System.out.println("Ham duoc goi truoc khi Bean Car bi xoa");
+	    }
+	}
+ 
+	@SpringBootApplication
+	public class App {
+	    public static void main(String[] args) {
+	        ApplicationContext context = SpringApplication.run(App.class, args);
+	
+	        // Lay Bean Car tu Application
+	        Car car = context.getBean(Car.class);
+	        System.out.println("Truoc khi ham bi Bean factory xoa");
+	        ((ConfigurableApplicationContext) context).getBeanFactory().destroyBean(car);
+	        System.out.println("Sau khi ham bi Bean factory xoa");
+	    }
+	}
+
+  	```
